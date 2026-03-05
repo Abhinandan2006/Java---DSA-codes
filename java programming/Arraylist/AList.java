@@ -6,6 +6,7 @@ public class AList {
         // ArrayList is part of java collection frame work
         // classname objectname= new clasname();
         ArrayList<Integer> list = new ArrayList<>();
+        @SuppressWarnings("unused")
         ArrayList<String> list2 = new ArrayList<>();
         ArrayList<Boolean > list3 = new ArrayList<>();
         // add

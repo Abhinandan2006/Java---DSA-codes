@@ -53,3 +53,47 @@ package Questions;
 // return (reversed == x);
 // }
 // }
+
+import java.util.*;
+
+class Solution {
+    public int minimumTime(int n, int[][] edges) {
+        int[][] d = edges;
+
+        List<int[]>[] graph = new ArrayList[n];
+        for (int i = 0; i < n; i++) graph[i] = new ArrayList<>();
+        for (int[] e : d) graph[e[0]].add(new int[]{e[1], e[2], e[3]});
+
+        int[] vis = new int[n];
+        Arrays.fill(vis, Integer.MAX_VALUE);
+        vis[0] = 0;
+
+        PriorityQueue<int[]> pq = new PriorityQueue<>(Comparator.comparingInt(a -> a[0]));
+        pq.offer(new int[]{0, 0}); 
+
+        while (!pq.isEmpty()) {
+            int[] curr = pq.poll();
+            int time = curr[0];
+            int node = curr[1];
+
+            if (node == n - 1) {
+                return time;
+            }
+            if (time > vis[node]){
+                continue;
+            }
+
+            for (int[] edge : graph[node]) {
+                int nei = edge[0], start = edge[1], end = edge[2];
+                int waitTime = Math.max(time, start);
+
+                if (waitTime <= end && waitTime + 1 < vis[nei]) {
+                    vis[nei] = waitTime + 1;
+                    pq.offer(new int[]{waitTime + 1, nei});
+                }
+            }
+        }
+
+        return -1;
+    }
+}

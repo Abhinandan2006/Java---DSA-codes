@@ -20,7 +20,7 @@ public class StackL {
         public static void push(int data){
             Node newNode = new Node(data);
             if (isEmpty()) {
-                head = newNode;
+                head = newNode;                                                                                                                                                                                                                                                                                                                                                                                                            
                 return;
             }
 

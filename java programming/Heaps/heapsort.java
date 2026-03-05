@@ -1,7 +1,5 @@
 package Heaps;
 
-import Array.array;
-
 public class heapsort {
 
     public static void heapify(int arr[], int i, int size) {

@@ -134,37 +134,54 @@ package Array;
 //     }
 // }
 
-import java.util.Arrays;
+//import java.util.Arrays;
+
+// public class array {
+
+//     public static double findMedianSortedArrays(int[] nums1, int[] nums2) {
+//         int temp[] = new int[nums1.length + nums2.length];
+//         int i = 0;
+//         int j = 0;
+//         int k = 0;
+//         while (i < nums1.length) {
+//             temp[k++] = nums1[i++];
+//         }
+//         while (j < nums1.length) {
+//             temp[k++] = nums2[j++];
+//         }
+//         Arrays.sort(temp);
+
+//         int mid = temp.length/2;
+//         if (temp.length%2 == 0) {
+//             return(temp[mid]+temp[mid-1])/2.0;
+
+//         }
+//         else{
+//             return temp[mid];
+//         }
+//     }
+
+//     public static void main(String[] args) {
+//         int nums1[] = { 1,3};
+//         int nums2[] = { 2, 4 };
+//         double median = findMedianSortedArrays(nums1, nums2);
+//         System.out.println(median);
+//     }
+// }
 
 public class array {
-
-    public static double findMedianSortedArrays(int[] nums1, int[] nums2) {
-        int temp[] = new int[nums1.length + nums2.length];
-        int i = 0;
-        int j = 0;
-        int k = 0;
-        while (i < nums1.length) {
-            temp[k++] = nums1[i++];
+    public static int binary(int[] arr, int low, int high, int k){
+        int mid = low + (high - low) / 2;
+        if(arr[mid] == k){
+            return mid;
         }
-        while (j < nums1.length) {
-            temp[k++] = nums2[j++];
-        }
-        Arrays.sort(temp);
-
-        int mid = temp.length/2;
-        if (temp.length%2 == 0) {
-            return(temp[mid]+temp[mid-1])/2.0;
-
-        }
-        else{
-            return temp[mid];
-        }
+        binary(arr, mid + 1, high, k);
+        binary(arr, low, high - 1, k);
+        return -1;
     }
-
     public static void main(String[] args) {
-        int nums1[] = { 1,3};
-        int nums2[] = { 2, 4 };
-        double median = findMedianSortedArrays(nums1, nums2);
-        System.out.println(median);
+        int[] arr = {20, 23, 34, 35, 76, 87, 90};
+        int ans = binary(arr, 0, arr.length - 1, 35);
+        System.out.println(ans);
     }
 }

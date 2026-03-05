@@ -67,7 +67,7 @@ public class BinaryTree1 {
         q.add(null);
         while (!q.isEmpty()) {
             Node currNode = q.remove();
-            if (currNode == null) {
+            if (currNode == null) { 
                 System.out.println();
                 if (q.isEmpty()) {
                     break;
